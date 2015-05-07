@@ -96,7 +96,7 @@ CREATE TEMP TABLE cells_new(radio TEXT, mcc INTEGER, mnc INTEGER, lac INTEGER, c
 .import towers_mozilla.csv cells_new
 INSERT INTO cells SELECT mcc, mnc, lac, cellid, long, lat, -1, min(max(range, 500),100000), max(1,samples) FROM cells_new;
 DROP TABLE cells_new;
-#DELETE FROM cells WHERE mcc != 310 AND mcc != 311;
+-- DELETE FROM cells WHERE mcc != 310 AND mcc != 311;
 CREATE INDEX _idx1 ON cells (mcc, mnc, lac, cid);
 CREATE INDEX _idx2 ON cells (lac, cid);
 VACUUM;
